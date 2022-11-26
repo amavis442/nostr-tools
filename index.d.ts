@@ -21,6 +21,7 @@ declare type Event = {
     content: string,
     tags: string[],
     created_at: number,
+    sig?: Hex,
 };
 
 declare function getBlankEvent(): Event;
@@ -69,7 +70,7 @@ declare type SubscriptionCallback = (event: Event, relay: string) => void;
 declare type SubscriptionOptions = {
     cb: SubscriptionCallback,
     filter: Filter,
-    skipVerification: boolean
+    skipVerification?: boolean
     // TODO: thread through how `beforeSend` actually works before trying to type it
     // beforeSend(event: Event): 
 };
@@ -95,7 +96,7 @@ declare type RelayPool = {
     removeRelay(url:string):void,
     getRelayList():Relay[],
     relayChangePolicy():Relay,
-    sub(opts: SubscriptionOptions, id?: string): Subscription,
+    sub(opts: SubscriptionOptions, id?: string, cbEose?: Function): Subscription,
     publish(event: Event, cb: PoolPublishCallback): Promise<Event>,
     close: () => void,
     status: number,
