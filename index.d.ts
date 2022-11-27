@@ -22,6 +22,7 @@ declare type Event = {
     tags: string[],
     created_at: number,
     sig?: Hex,
+    limit?: number,
 };
 
 declare function getBlankEvent(): Event;
@@ -77,6 +78,9 @@ declare type SubscriptionOptions = {
 
 declare type Subscription = {
     unsub(): void,
+    sub(opts: SubscriptionOptions, id?: string, cbEose?: Function):Subscription,
+    addRelay(url: string, opts?: RelayPolicy): Relay,
+    removeRelay(url:string):void,
 };
 
 declare type PublishCallback = (status: number) => void;
