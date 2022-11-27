@@ -1,5 +1,5 @@
 import {Buffer} from 'buffer'
-import createHash from 'create-hash'
+import sha256 from 'crypto-js/sha256'
 import * as secp256k1 from '@noble/secp256k1'
 
 export function getBlankEvent() {
@@ -24,10 +24,7 @@ export function serializeEvent(evt) {
 }
 
 export function getEventHash(event) {
-  let eventHash = createHash('sha256')
-    .update(Buffer.from(serializeEvent(event)))
-    .digest()
-  return Buffer.from(eventHash).toString('hex')
+  return sha256(serializeEvent(event)).toString();
 }
 
 export function validateEvent(event) {

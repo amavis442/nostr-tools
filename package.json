@@ -14,7 +14,7 @@
     "@scure/bip39": "^1.1.0",
     "browserify-cipher": ">=1",
     "buffer": ">=5",
-    "create-hash": "^1.2.0",
+    "crypto-js": "^4.1.1",
     "cross-fetch": "^3.1.4",
     "websocket-polyfill": "^0.0.3"
   },
