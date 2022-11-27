@@ -30,7 +30,7 @@ export function relayPool() {
   const activeSubscriptions = {}
 
   //sub creates a Subscription object {sub:Function, unsub:Function, addRelay:Function,removeRelay :Function }
-  const sub = ({cb, filter, beforeSend}, id, cbEose) => {
+  const sub = ({cb, filter, beforeSend}, id, cbEose = (url) => {}) => {
     
     //check if it has an id, if not assign one
     if (!id) id = Math.random().toString().slice(2)
