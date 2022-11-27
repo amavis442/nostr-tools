@@ -41,6 +41,7 @@ declare type Filter = {
     until?: number,
     "#e"?: string[],
     "#p"?: string[],
+    limit?: number,
 };
 
 declare function matchFilter(filter: Filter, event: Event): boolean;
